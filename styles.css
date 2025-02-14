@@ -1,0 +1,46 @@
+:root {
+    --main: rgb(46, 46, 46);
+    --accent: rgb(255, 254, 218);
+}
+
+body {
+    background-color: var(--main);
+    color: var(--accent)
+}
+
+.content {
+    padding: 1rem;
+}
+
+.content > * {
+    margin-bottom: 1rem;
+}
+
+#contestant-table {
+    border: 2px solid var(--accent);
+    border-collapse: collapse;
+}
+
+#contestant-table tbody tr {
+    border-bottom: 2px solid var(--accent);
+}
+
+#contestant-table thead {
+    border-bottom: 2px solid var(--accent);
+}
+
+#contestant-table thead th:not(:last-child) {
+    border-right: 2px solid var(--accent);
+}
+
+td {
+    padding-left: 1rem;
+}
+
+tr td:not(:last-of-type) {
+    border-right: 2px solid var(--accent);
+}
+
+th {
+    padding: 0.1rem 1rem;
+}
