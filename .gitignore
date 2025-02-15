@@ -15,6 +15,3 @@ yarn-error.log*
 *.out
 *.log
 .DS_Store
-
-# Data files (optional)
-events/contestants.json
