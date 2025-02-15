@@ -7,28 +7,32 @@ document.addEventListener("DOMContentLoaded", function () {
     let eventButton = document.querySelector('.new-event');
 
     gameButton.addEventListener('click', function () {
-        alert('Game has begun!');
         grabGameEvents();
     })
 
     endButton.addEventListener('click', function () {
-        alert('Game has ended!');
         endGame();
     })
 
     eventButton.addEventListener('click', function () {
-        alert('New Event!');
         gameEvent();
     })
 })
 
 function grabGameEvents() {
-    game_contestants = [...contestants];
+    fetch('http://localhost:3000/contestants')
+        .then(response => response.json())
+        .then(data => {
+            game_contestants = [...data];
+            console.log(game_contestants);
+
+        })
 
     fetch('../events/events.json')
         .then(response => response.json())
         .then(data => {
             game_events = [...data];
+            console.log(game_events);
         })
 }
 
@@ -51,6 +55,6 @@ function gameEvent() {
     let event = game_events[roll(game_events.length)];
     let log = document.getElementById('events');
     let newEvent = document.createElement('p');
-    newEvent.textContent = `${contestant} ${event.description}`;
+    newEvent.textContent = `${contestant.name} ${event.description}`;
     log.appendChild(newEvent);
 }
