@@ -5,28 +5,51 @@ document.addEventListener("DOMContentLoaded", function () {
 
     button.addEventListener('click', function () {
         let contestant = document.getElementById('contestant');
+        let name = contestant.value.trim();
 
-        if (contestant.value.trim() !== "") {
-            updateContestants(contestant.value);
-            contestant.value = "";
-        } else {
-            alert("Enter a fuckin name, dipshit")
+        if (name === "") {
+            alert("Enter a name, dipshit");
+            return;
         }
+
+        fetch('http://localhost:3000/contestants', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json'},
+            body: JSON.stringify({ name })
+        })
+            .then(response => response.json())
+            .then(data => {
+                contestant.value = "";
+                updateContestants(data.contestants)
+            })
+            .catch(error => console.error('Error: ', error))
+
     })
+
+    loadContestants();
 })
 
-function updateContestants(contestant) {
-    contestants.push(contestant);
+function loadContestants() {
+    fetch('http://localhost:3000/contestants')
+        .then(response => response.json())
+        .then(data => updateContestants(data))
+        .catch(error => console.error('Error: ', error))
+}
 
+function updateContestants(contestants) {
     var table = document.querySelector('#contestant-table tbody');
-    var newRow = document.createElement('tr');
-    var newCell = document.createElement('td');
-    var indexCell = document.createElement('td');
+    table.innerHTML = "";
 
-    indexCell.textContent = contestants.length;
-    newCell.textContent = contestant;
+    contestants.forEach((contestant, index) => {
+        var newRow = document.createElement('tr');
+        var indexCell = document.createElement('td');
+        var nameCell = document.createElement('td');
 
-    newRow.appendChild(indexCell);
-    newRow.appendChild(newCell);
-    table.appendChild(newRow);
+        indexCell.textContent = index + 1;
+        nameCell.textContent = contestant.name;
+
+        newRow.appendChild(indexCell);
+        newRow.appendChild(nameCell);
+        table.appendChild(newRow);
+    });
 }
