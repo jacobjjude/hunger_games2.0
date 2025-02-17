@@ -24,8 +24,10 @@ function grabGameEvents() {
         .then(response => response.json())
         .then(data => {
             game_contestants = [...data];
+            game_contestants.forEach((x) => {
+                x.isAlive = true;
+            })
             console.log(game_contestants);
-
         })
 
     fetch('../events/events.json')
@@ -55,6 +57,13 @@ function gameEvent() {
     let event = game_events[roll(game_events.length)];
     let log = document.getElementById('events');
     let newEvent = document.createElement('p');
-    newEvent.textContent = `${contestant.name} ${event.description}`;
+
+    if (event.isFatal) {
+        newEvent.textContent = `${contestant.name} ${event.description} (fatal)`;
+        contestant.isAlive = false;
+        console.log(contestant);
+    } else {
+        newEvent.textContent = `${contestant.name} ${event.description}`;
+    }
     log.appendChild(newEvent);
 }

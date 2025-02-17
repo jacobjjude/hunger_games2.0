@@ -1,11 +1,14 @@
 [
     {
-        "description": "falls down"
+        "description": "falls down",
+        "isFatal": false
     },
     {
-        "description": "farts themselves to death"
+        "description": "farts themselves to death",
+        "isFatal": true
     },
     {
-        "description": "kisses a girl for the first time. Dies from excitement"
+        "description": "kisses a girl for the first time. Dies from excitement",
+        "isFatal": true
     }
 ]

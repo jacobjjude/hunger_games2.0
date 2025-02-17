@@ -9,7 +9,7 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 
-const contestantFile = path.join(__dirname, '..', 'events', 'contestants.json');
+const contestantFile = path.resolve(__dirname, '../events/contestants.json');
 
 app.get('/contestants', (req, res) => {
     fs.readFile(contestantFile, 'utf-8', (err, data) => {
