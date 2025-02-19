@@ -1,7 +1,10 @@
+import { hideEvent } from "./modules/hide.js";
+
 let game_contestants = [];
 let game_events = [];
 let day_events = [];
 let game_deaths = [];
+let total_events = [];
 let day_counter = 1;
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -38,6 +41,7 @@ function grabGameEvents() {
             game_events = [...data];
         })
     addDayCounter();
+    hideEvent();
 }
 
 function endGame() {
@@ -101,6 +105,14 @@ function addDayCounter() {
 }
 
 function declareWinner() {
+    console.log(`Game Contestants: `, game_contestants);
+    console.log(`Game Events: `, game_events);
+    console.log(`Game Deaths: `, game_deaths);
+    console.log(`Day Events: `, day_events);
+    console.log(`Day Counter: `, day_counter);
+    console.log('Total Events', total_events);
+
+    hideEvent();
     let winner = game_contestants.find(x => x.isAlive);
     let div = document.getElementById('events');
     let winnerElement = document.createElement('h1');
@@ -111,12 +123,12 @@ function declareWinner() {
 
 function checkGameEnd(eligible) {
     if (game_contestants.filter(c => c.isAlive).length === 1) {
-        console.log('declaring winner triggered')
         honorTheDead();
         declareWinner();
         return true;
     } else if (eligible.length === 0) {
         honorTheDead();
+        total_events.push(day_events);
         day_events = [];
         day_counter++;
         addDayCounter();

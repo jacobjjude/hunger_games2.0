@@ -15,3 +15,5 @@ yarn-error.log*
 *.out
 *.log
 .DS_Store
+
+favicon.ico
