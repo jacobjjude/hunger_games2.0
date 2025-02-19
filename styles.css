@@ -44,3 +44,13 @@ tr td:not(:last-of-type) {
 th {
     padding: 0.1rem 1rem;
 }
+
+#game-container {
+    display: flex;
+    justify-content: space-evenly;
+    word-wrap: wrap;
+}
+
+#game-container > * {
+    width: 50%;
+}

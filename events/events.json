@@ -10,5 +10,25 @@
     {
         "description": "kisses a girl for the first time. Dies from excitement",
         "isFatal": true
+    },
+    {
+        "description": "tries to shoot another contestant, but turns the gun the wrong way",
+        "isFatal": true
+    },
+    {
+        "description": "developed a rash on their butt and spent all day scratching",
+        "isFatal": false
+    },
+    {
+        "description": "cries",
+        "isFatal": false
+    },
+    {
+        "description": "spends all day making an outhouse, just to soil themself",
+        "isFatal": false
+    },
+    {
+        "description": "has a mental breakdown and spends all day pretending to be he MockingJay",
+        "isFatal": false
     }
 ]

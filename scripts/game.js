@@ -51,55 +51,34 @@ function endGame() {
     if (log) {
         log.innerHTML = '';
     }
+    let deaths = document.getElementById('dead');
+    if (dead) {
+        deaths.innerHTML = '';
+    }
 }
 
 function roll(int) {
     return Math.floor(Math.random() * int);
 }
 
-// okay this function is getting too complex. Need to break it up
 function gameEvent() {
     let eligible_contestants = chooseContestant(game_contestants);
 
-    console.log(`Day ${day_counter}`);
-    console.log(`Total Contestants: ${game_contestants.length}`);
-    console.log(`Game Deaths: ${game_deaths.length}`);
-    console.log(`Alive Contestants: ${game_contestants.filter(c => c.isAlive).length}`);
-    console.log(`Eligible Contestants: ${eligible_contestants.length}`);
-
-    //if there's only one eligible contestant AND all other contestants are dead, end game
-    if (game_contestants.filter(c => c.isAlive).length === 1) {
-        let winner = game_contestants.filter(x => x.isAlive);
-        declareWinner(winner);
-        return;
-    } else if (eligible_contestants.length === 0) {
-        console.log('days events over. Resetting');
-        day_events = [];
-        day_counter++;
-        addDayCounter();
+    if (checkGameEnd(eligible_contestants)) {
         return;
     }
+
     let contestant = eligible_contestants[roll(eligible_contestants.length)];
     let event = game_events[roll(game_events.length)];
-    logEvent(contestant, event);
-    let log = document.getElementById('events');
-    let newEvent = document.createElement('p');
 
-    if (event.isFatal) {
-        newEvent.textContent = `${contestant.name} ${event.description} (fatal)`;
-        contestant.isAlive = false;
-        game_deaths.push(contestant.name);
-    } else {
-        newEvent.textContent = `${contestant.name} ${event.description}`;
-    }
-    log.appendChild(newEvent);
+    processEvent(contestant, event);
 }
 
 function chooseContestant(contestants) {
     let eligible = contestants.filter(x => 
         x.isAlive === true &&
         !day_events.some(event => event.name === x.name) &&
-        !game_deaths.includes(x.name)
+        !game_deaths.some(y => x.name === y.name)
     );
     return eligible;
 }
@@ -108,7 +87,8 @@ function logEvent(selected_contestant, selected_event) {
     let obj = {
         name: selected_contestant.name,
         event: selected_event.description,
-        fatal: selected_event.isFatal
+        fatal: selected_event.isFatal,
+        day: day_counter
     }
     day_events.push(obj);
 }
@@ -120,10 +100,58 @@ function addDayCounter() {
     div.append(newDay);
 }
 
-function declareWinner(winner) {
+function declareWinner() {
+    let winner = game_contestants.find(x => x.isAlive);
     let div = document.getElementById('events');
     let winnerElement = document.createElement('h1');
     winnerElement.textContent = `${winner.name} has won the Hunger Games!`
 
     div.append(winnerElement);
+}
+
+function checkGameEnd(eligible) {
+    if (game_contestants.filter(c => c.isAlive).length === 1) {
+        console.log('declaring winner triggered')
+        honorTheDead();
+        declareWinner();
+        return true;
+    } else if (eligible.length === 0) {
+        honorTheDead();
+        day_events = [];
+        day_counter++;
+        addDayCounter();
+        return true;
+    }
+
+    return false;
+}
+
+function processEvent(c, e) {
+    let log = document.getElementById('events');
+    let newEvent = document.createElement('p');
+
+    if (e.isFatal) {
+        newEvent.textContent = `${c.name} ${e.description} (fatal)`;
+        dead = {
+            name: c.name,
+            event: e.description,
+            day: day_counter
+        }
+        c.isAlive = false;
+        game_deaths.push(dead);
+    } else {
+        newEvent.textContent = `${c.name} ${e.description}`;
+    }
+    log.appendChild(newEvent);
+    logEvent(c,e);
+}
+
+function honorTheDead() {
+    let dead = [...game_deaths].filter(x => x.day === day_counter);
+    let deadDiv = document.getElementById('dead');
+    dead.forEach(x => {
+        let element = document.createElement('p');
+        element.textContent = `${x.name} - Day ${x.day}`;
+        deadDiv.append(element);
+    })
 }
