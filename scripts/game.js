@@ -1,4 +1,5 @@
 import { hideEvent } from "./modules/hide.js";
+import { dayEventsLog } from "./modules/day_event_log.js";
 
 let game_contestants = [];
 let game_events = [];
@@ -113,6 +114,7 @@ function declareWinner() {
     console.log('Total Events', total_events);
 
     hideEvent();
+    dayEventsLog(total_events);
     let winner = game_contestants.find(x => x.isAlive);
     let div = document.getElementById('events');
     let winnerElement = document.createElement('h1');

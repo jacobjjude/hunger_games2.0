@@ -1,3 +1,180 @@
 [
-    
+  {
+    "game": 1,
+    "events": [
+      {
+        "name": "Butts McGee",
+        "event": "cries",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Sean Connery",
+        "event": "kisses a girl for the first time. Dies from excitement",
+        "fatal": true,
+        "day": 1
+      },
+      {
+        "name": "Nic Cage",
+        "event": "developed a rash on their butt and spent all day scratching",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Turd Ferguson",
+        "event": "falls down",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Jacob",
+        "event": "kisses a girl for the first time. Dies from excitement",
+        "fatal": true,
+        "day": 1
+      },
+      {
+        "name": "Tits McGee",
+        "event": "cries",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Sorry",
+        "event": "tries to shoot another contestant, but turns the gun the wrong way",
+        "fatal": true,
+        "day": 1
+      },
+      {
+        "name": "Guantanamo Jones",
+        "event": "kisses a girl for the first time. Dies from excitement",
+        "fatal": true,
+        "day": 1
+      },
+      {
+        "name": "Turd Ferguson",
+        "event": "spends all day making an outhouse, just to soil themself",
+        "fatal": false,
+        "day": 2
+      },
+      {
+        "name": "Nic Cage",
+        "event": "kisses a girl for the first time. Dies from excitement",
+        "fatal": true,
+        "day": 2
+      },
+      {
+        "name": "Tits McGee",
+        "event": "has a mental breakdown and spends all day pretending to be he MockingJay",
+        "fatal": false,
+        "day": 2
+      },
+      {
+        "name": "Butts McGee",
+        "event": "developed a rash on their butt and spent all day scratching",
+        "fatal": false,
+        "day": 2
+      },
+      {
+        "name": "Turd Ferguson",
+        "event": "developed a rash on their butt and spent all day scratching",
+        "fatal": false,
+        "day": 3
+      },
+      {
+        "name": "Tits McGee",
+        "event": "has a mental breakdown and spends all day pretending to be he MockingJay",
+        "fatal": false,
+        "day": 3
+      },
+      {
+        "name": "Butts McGee",
+        "event": "farts themselves to death",
+        "fatal": true,
+        "day": 3
+      }
+    ]
+  },
+  {
+    "game": 2,
+    "events": [
+      {
+        "name": "Sorry",
+        "event": "spends all day making an outhouse, just to soil themself",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Butts McGee",
+        "event": "spends all day making an outhouse, just to soil themself",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Guantanamo Jones",
+        "event": "kisses a girl for the first time. Dies from excitement",
+        "fatal": true,
+        "day": 1
+      },
+      {
+        "name": "Sean Connery",
+        "event": "developed a rash on their butt and spent all day scratching",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Turd Ferguson",
+        "event": "has a mental breakdown and spends all day pretending to be he MockingJay",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Jacob",
+        "event": "kisses a girl for the first time. Dies from excitement",
+        "fatal": true,
+        "day": 1
+      },
+      {
+        "name": "Nic Cage",
+        "event": "falls down",
+        "fatal": false,
+        "day": 1
+      },
+      {
+        "name": "Tits McGee",
+        "event": "farts themselves to death",
+        "fatal": true,
+        "day": 1
+      },
+      {
+        "name": "Butts McGee",
+        "event": "tries to shoot another contestant, but turns the gun the wrong way",
+        "fatal": true,
+        "day": 2
+      },
+      {
+        "name": "Sorry",
+        "event": "spends all day making an outhouse, just to soil themself",
+        "fatal": false,
+        "day": 2
+      },
+      {
+        "name": "Turd Ferguson",
+        "event": "tries to shoot another contestant, but turns the gun the wrong way",
+        "fatal": true,
+        "day": 2
+      },
+      {
+        "name": "Nic Cage",
+        "event": "developed a rash on their butt and spent all day scratching",
+        "fatal": false,
+        "day": 2
+      },
+      {
+        "name": "Sean Connery",
+        "event": "kisses a girl for the first time. Dies from excitement",
+        "fatal": true,
+        "day": 2
+      }
+    ]
+  }
 ]
